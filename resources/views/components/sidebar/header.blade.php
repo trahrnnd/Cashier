@@ -4,13 +4,13 @@
         href="{{ route('dashboard') }}"
         class="inline-flex items-center gap-2"
     >
-        <x-application-logo aria-hidden="true" class="w-10 h-auto" />
-
-        <span class="sr-only">Dashboard</span>
+        <!-- <x-application-logo aria-hidden="true" class="w-10 h-auto" /> -->
+        
+        <span class="text-lg font-semibold px-3">Admint</span>
     </a>
 
     <!-- Toggle button -->
-    <x-button
+    <!-- <x-button
         type="button"
         icon-only
         sr-text="Toggle sidebar"
@@ -34,5 +34,5 @@
             aria-hidden="true"
             class="w-6 h-6 lg:hidden"
         />
-    </x-button>
+    </x-button> -->
 </div>
