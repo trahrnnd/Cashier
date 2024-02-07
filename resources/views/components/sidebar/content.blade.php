@@ -1,7 +1,7 @@
 <x-perfect-scrollbar
     as="nav"
     aria-label="main"
-    class="flex flex-col flex-1 gap-4 px-3 pt-10"
+    class="flex flex-col flex-1 gap-4 px-6 pt-10"
 >
 
     <x-sidebar.link
@@ -21,6 +21,16 @@
     >
         <x-slot name="icon">
             <x-icons.product class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+        </x-slot>
+    </x-sidebar.link>
+
+    <x-sidebar.link
+        title="Users"
+        href="{{ route('users') }}"
+        :isActive="request()->routeIs('users')"
+    >
+        <x-slot name="icon">
+            <x-icons.users class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
 
