@@ -16,23 +16,26 @@
 
     <x-sidebar.link
         title="Product"
-        href="{{ route('product') }}"
-        :isActive="request()->routeIs('product')"
+        href="{{ route('product.index') }}"
+        :isActive="request()->routeIs('product.index')"
     >
         <x-slot name="icon">
             <x-icons.product class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
 
+    @if (Auth::user()->role == 'Admin')
     <x-sidebar.link
         title="Users"
-        href="{{ route('users') }}"
-        :isActive="request()->routeIs('users')"
+        href="{{ route('users.index') }}"
+        :isActive="request()->routeIs('users.index')"
     >
         <x-slot name="icon">
             <x-icons.users class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
         </x-slot>
     </x-sidebar.link>
+        
+    @endif
 
     <!-- <x-sidebar.dropdown
         title="Buttons"
