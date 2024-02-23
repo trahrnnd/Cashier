@@ -45,7 +45,8 @@ class UserController extends Controller
         // dd($data)
         User::create($data);
 
-        return redirect('/users');
+
+        return redirect('/users')->with('success', 'berhasil');
     }
 
     /**
@@ -59,24 +60,50 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(string $id)
     {
         //
+        $user = User::findOrFail($id);
+        return view('users', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, string $id)
     {
         //
+        $user = User::findOrFail($id);
+
+        // dd($usex`r);
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required',
+            'role' => 'required',
+        ]);
+
+        if ($request->has('password')) {
+            $data['password'] = Hash::make($request->input('password'));
+        }
+
+        $user->update($data);
+
+        return redirect('/users')->with('success', 'Data berhasil diupdate');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        //get user id
+        $user = User::findOrFail($id);
+
+        //delete db
+        $user->delete();
+
+        //return page
+        return redirect('/users')->with('success', 'Delete data success');
     }
 }
